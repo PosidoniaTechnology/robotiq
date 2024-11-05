@@ -1,21 +1,26 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>robotiq_description</name>
-  <version>0.1.0</version>
-  <description>The robotiq_description package</description>
+  <version>0.0.0</version>
+  <description>Description files for Robotiq grippers</description>
+  <maintainer email="nikola.banovic@posidonia-technology.hr">Nikola Banovic</maintainer>
+  <license>Priorietary License - Posidonia Technology</license>
 
-  <maintainer email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</maintainer>
-  <license>BSD</license>
-  <author email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</author>
-  <url type="website">https://github.com/crigroup/robotiq</url>
-  <url type="bugtracker">https://github.com/crigroup/robotiq/issues</url>
-  <url type="repository">https://github.com/crigroup/robotiq</url>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>rospy</depend>
-  <!-- <depend>openrave_catkin</depend> -->
-
+  <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>urdf</exec_depend>
+  <exec_depend>rviz2</exec_depend>
   <exec_depend>xacro</exec_depend>
+
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+  <test_depend>launch_testing_ros</test_depend>
+  <test_depend>liburdfdom-tools</test_depend>
+  <test_depend>xacro</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

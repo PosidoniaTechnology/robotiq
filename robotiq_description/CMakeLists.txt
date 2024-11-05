@@ -1,17 +1,19 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.8)
 project(robotiq_description)
 
-find_package(catkin REQUIRED COMPONENTS
-  # openrave_catkin
+if(CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
+  add_compile_options(-Wall -Wextra -Werror=conversion -Werror=unused-but-set-variable -Werror=return-type -Werror=shadow)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+
+install(
+  DIRECTORY meshes urdf
+  DESTINATION share/${PROJECT_NAME}
 )
 
-catkin_package()
-
-install(DIRECTORY launch meshes urdf DESTINATION
-                                            ${CATKIN_PACKAGE_SHARE_DESTINATION})
-
-# Add the meshes to the OpenRAVE path
-install(DIRECTORY meshes
-                  DESTINATION ${OpenRAVE_DEVEL_DIR}/${OpenRAVE_DATA_DIR}/robots)
-install(DIRECTORY meshes
-                DESTINATION ${OpenRAVE_INSTALL_DIR}/${OpenRAVE_DATA_DIR}/robots)
+ament_package()
