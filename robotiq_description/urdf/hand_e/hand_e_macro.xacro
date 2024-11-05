@@ -10,29 +10,41 @@
 
     <link name="${prefix}robotiq_hand_e_base_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://robotiq_description/meshes/hand_e/visual/hand_e.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/collision/hand_e.dae"/>
+        </geometry>
+      </collision>
     </link>
 
     <link name="${prefix}robotiq_hand_e_left_finger">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://robotiq_description/meshes/hand_e/visual/finger_1.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/collision/finger_1.dae"/>
+        </geometry>
+      </collision>
     </link>
 
     <link name="${prefix}robotiq_hand_e_right_finger">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://robotiq_description/meshes/hand_e/visual/finger_2.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/collision/finger_2.dae"/>
+        </geometry>
+      </collision>
     </link>
 
     <joint name="${prefix}robotiq_hand_e_base_joint" type="fixed">
