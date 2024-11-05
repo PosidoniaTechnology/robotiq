@@ -24,7 +24,6 @@
           <param name="initial_value">0.0</param>
         </state_interface>
         <state_interface name="velocity"/>
-        <state_interface name="acceleration"/>
       </joint>
       <!-- When mocking hardware we need to include the other gripper joint -->
       <xacro:if value="${use_fake_hardware}">
