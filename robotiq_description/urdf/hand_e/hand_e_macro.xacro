@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="robotiq_hand_e"  params="
+    prefix 
+    parent 
+    *origin
+    use_fake_hardware:=false 
+    fake_sensor_commands:=false">
+
+    <link name="${prefix}robotiq_hand_e_base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/visual/hand_e.dae"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${prefix}robotiq_hand_e_left_finger">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/visual/finger_1.dae"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${prefix}robotiq_hand_e_right_finger">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://robotiq_description/meshes/hand_e/visual/finger_2.dae"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${prefix}robotiq_hand_e_base_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}robotiq_hand_e_base_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <joint name="${prefix}robotiq_hand_e_left_finger_joint" type="prismatic">
+      <origin xyz="0 0 0.099" rpy="0 0 0"/>
+      <parent link="${prefix}robotiq_hand_e_base_link"/>
+      <child link="${prefix}robotiq_hand_e_left_finger"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="130" lower="0" upper="0.025" velocity="0.15"/>
+    </joint>
+
+    <joint name="${prefix}robotiq_hand_e_right_finger_joint" type="prismatic">
+      <origin xyz="0 0 0.099" rpy="0 0 0"/>
+      <parent link="${prefix}robotiq_hand_e_base_link"/>
+      <child link="${prefix}robotiq_hand_e_right_finger"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="130" lower="0" upper="0.025" velocity="0.15"/>
+      <mimic joint="${prefix}robotiq_hand_e_left_finger_joint" multiplier="1" offset="0"/>
+    </joint>
+
+    <!-- ros2_control -->
+    <xacro:include filename="$(find robotiq_description)/urdf/hand_e/hand_e_macro.ros2_control.xacro"/>
+    <xacro:robotiq_hand_e_ros2_control 
+          prefix="${prefix}"
+          use_fake_hardware="${use_fake_hardware}" 
+          fake_sensor_commands="${fake_sensor_commands}" 
+          />
+  </xacro:macro>
+</robot>
