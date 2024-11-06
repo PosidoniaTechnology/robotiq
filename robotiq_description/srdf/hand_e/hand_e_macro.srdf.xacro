@@ -14,13 +14,14 @@
                 <joint name="${prefix}robotiq_hand_e_right_finger_joint" value="0.0"/>
         </group_state>
         <group_state name="${prefix}close" group="${prefix}${name}_gripper">
-                <joint name="${prefix}robotiq_hand_e_left_finger_joint" value="-0.1"/>
-                <joint name="${prefix}robotiq_hand_e_right_finger_joint" value="0.1"/>
+                <joint name="${prefix}robotiq_hand_e_left_finger_joint" value="0.025"/>
+                <joint name="${prefix}robotiq_hand_e_right_finger_joint" value="0.025"/>
         </group_state>
 
         <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}link7" reason="Adjacent"/>
         <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}robotiq_hand_e_left_finger" reason="Adjacent"/>
         <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}robotiq_hand_e_right_finger" reason="Adjacent"/>
+        <disable_collisions link1="${prefix}robotiq_hand_e_left_finger" link2="${prefix}robotiq_hand_e_right_finger" reason="Never"/>
 
     </xacro:macro>
 </robot>
