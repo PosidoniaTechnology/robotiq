@@ -7,7 +7,7 @@
                fake_sensor_commands:=false"
                >
 
-    <ros2_control name="robotiq_hand_e_ros2_control" type="system">
+    <ros2_control name="RobotiqHandE_HardwareInterface" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
           <plugin>mock_components/GenericSystem</plugin>
