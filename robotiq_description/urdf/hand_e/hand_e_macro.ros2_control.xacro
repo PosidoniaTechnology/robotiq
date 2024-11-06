@@ -28,6 +28,7 @@
       <!-- When mocking hardware we need to include the other gripper joint -->
       <xacro:if value="${use_fake_hardware}">
           <joint name="${prefix}robotiq_hand_e_right_finger_joint">
+            <param name="mimic">${prefix}robotiq_hand_e_left_finger_joint</param>
             <state_interface name="position"/>
             <state_interface name="velocity"/>
           </joint>
