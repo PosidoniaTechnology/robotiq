@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="hand_e_srdf" params="name prefix">
+    <xacro:macro name="hand_e_srdf" params="name prefix disable_link_collision">
 
         <group name="${name}_gripper">
                 <link name="${prefix}robotiq_hand_e_base_link"/>
@@ -18,7 +18,7 @@
                 <joint name="${prefix}robotiq_hand_e_right_finger_joint" value="0.025"/>
         </group_state>
 
-        <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}link7" reason="Adjacent"/>
+        <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}${disable_link_collision}" reason="Adjacent"/>
         <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}robotiq_hand_e_left_finger" reason="Adjacent"/>
         <disable_collisions link1="${prefix}robotiq_hand_e_base_link" link2="${prefix}robotiq_hand_e_right_finger" reason="Adjacent"/>
         <disable_collisions link1="${prefix}robotiq_hand_e_left_finger" link2="${prefix}robotiq_hand_e_right_finger" reason="Never"/>
